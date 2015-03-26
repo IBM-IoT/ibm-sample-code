@@ -1,0 +1,18 @@
+sudo apt-get install nodejs nodejs-legacy npm libudev-dev bluez libbluetooth-dev -y
+cd ~
+git clone https://github.com/node-red/node-red.git
+sudo mkdir node-red/runIot
+sudo cp IotKit/readZwave.js node-red/runIot/readZwave.js
+sudo cp IotKit/readBle.js node-red/runIot/readBle.js
+sudo mkdir node-red/runIot/bin
+sudo cp IotKit/util.js node-red/runIot/bin/util.js
+sudo cp IotKit/configZwave.json node-red/runIot/bin/configZwave.json
+sudo cp IotKit/configBle.json node-red/runIot/bin/configBle.json
+cd node-red
+sudo npm install -y
+sudo npm install openzwave getmac sensortag -y
+cd ~
+sudo cp IotKit/flow.json .node-red/lib/flow/zwaveFlow.json
+sudo cp IotKit/flow.json .node-red/lib/flow/bleFlow.json
+mv IotKit/timeseries node-red/nodes/timeseries
+sudo nodejs node-red/red.js
