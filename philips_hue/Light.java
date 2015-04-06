@@ -140,7 +140,7 @@ public class Light {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Light light = new Light("http://192.168.10.100/", "newdeveloper", 2);
+		Light light = new Light("http://localhost/", "newdeveloper", 2);
 		Object o = light.get("");
 		System.out.println(JSON.serialize(o));
 		

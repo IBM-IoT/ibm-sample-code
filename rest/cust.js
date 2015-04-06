@@ -2,7 +2,7 @@ $(document).ready(function() {
     var output = "<table>";
 
     $.ajax({
-        url: "http://198.23.75.155:27018/stores_demo/customer"
+        url: "http://localhost:27018/stores_demo/customer"
     }).then(function(data) {
        for(var i in data) {
           output += "<tr>";
