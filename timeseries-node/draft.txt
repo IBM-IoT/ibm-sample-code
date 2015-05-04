@@ -1,0 +1,8 @@
+Here is a sample Node-RED flow that demonstrates how one can use time series nodes.
+
+Let's describe what exactly is going on here. There are two main parts to this flow. The top part begins with an HTTP request node, "Get sensor temperature". In this first node we retrieve the current temperature the sensor is reading via an HTTP request, as you might expect. We then proceed to take our message payload and filter out any outlier values, defaulting to no action if the value falls outside a certain range. If the temperature is determined to not be an outlier, it is stored into the timeseries database in the final node, wherein an ip address and table name are supplied.
+
+In the lower half of the flow, we begin by setting this entire section up to trigger every 15 minutes. During this section, we go look at the data we stored in the timeseries database in the previous node chain, and collect the average temperature over a 15 minute time frame. Once we have this, we spit the average out via a MQTT message, and either turn on air conditioning or do nothing based upon a certain temperature threshold for the average.
+
+You can get the export data for this flow here:
+Copy the contents of the example_flow file into your clipboard, open Node-RED and navigate to Import -> Clipboard, and paste it there.
